@@ -11,9 +11,6 @@
 #ifndef TEST_ALG_HEAPSORT_H
 #define TEST_ALG_HEAPSORT_H
 
-#include <vector>
-#include <iostream>
-#include <assert.h>
 #include "Utils.h"
 
 class HeapSortSln {
@@ -89,10 +86,8 @@ public:
         }
     }
 
-    static void Test()
+    static void Test(std::vector<int> Data)
     {
-        std::vector<int> Data = {3, 5, 3, 0, 8, 6, 1, 5, 8, 6, 2, 4, 9, 4, 7, 0, 1, 8, 9, 7, 3, 1, 2, 5, 9, 7, 4, 0, 2, 6, 1};
-
         // 从小到大排列，那么应该用“大顶堆”
 #define SmallToBig 1
 
@@ -114,18 +109,11 @@ public:
 #endif
 #endif
 
-        int Last = Data[0];
-        for(auto it : Data)
-        {
 #if SmallToBig
-            assert(Last <= it);
+        utils::DumpSmallToBig(Data);
 #else
-            assert(Last >= it);
+        utils::DumpBigToSmall(Data);
 #endif
-
-            std::cout << it << " ";
-        }
-        std::cout << std::endl;
     }
 
 private:
